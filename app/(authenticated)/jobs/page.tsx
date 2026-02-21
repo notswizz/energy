@@ -47,17 +47,11 @@ export default async function JobsPage({
   });
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">Pipeline</h1>
-        <span className="text-sm text-gray-500">{jobs.length} jobs</span>
-      </div>
-
-      <JobsPageClient
-        jobs={jobs}
-        crewLeads={crewLeads}
-        defaultView={(params.view as "kanban" | "table") || "kanban"}
-      />
-    </div>
+    <JobsPageClient
+      jobs={jobs}
+      crewLeads={crewLeads}
+      defaultView={(params.view as "kanban" | "table") || "kanban"}
+      totalCount={jobs.length}
+    />
   );
 }

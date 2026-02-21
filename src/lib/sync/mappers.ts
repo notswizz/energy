@@ -10,7 +10,7 @@ const SNUGGPRO_STAGE_MAP: Record<string, JobStage> = {
   "3": "work_in_progress",
   "4": "inspection",
   "5": "complete",
-  "6": "paid",
+  "6": "complete",
   // Also support text values
   audit: "audit_complete",
   "audit_scheduled": "audit_scheduled",
@@ -20,7 +20,7 @@ const SNUGGPRO_STAGE_MAP: Record<string, JobStage> = {
   inspection: "inspection",
   completed: "complete",
   complete: "complete",
-  paid: "paid",
+  paid: "complete",
   lead: "lead",
 };
 
@@ -141,6 +141,8 @@ export function mapSnuggProJob(
     walls,
     windows,
     rebates,
+    rebateTracker: [],
+    costing: null,
     stageHistory,
     lastSyncedAt: new Date(),
   };

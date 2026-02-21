@@ -45,7 +45,7 @@ export async function GET() {
     photosSynced += data.photoCount || 0;
 
     const stage = normalizeStage(data.stage, { hasAuditDate: !!data.auditDate, hasEnergyData: !!data.energyBaseline });
-    if (["complete", "paid"].includes(stage)) auditsCompleted++;
+    if (stage === "complete") auditsCompleted++;
     if (data.rebates?.submissionStatus === "pending") rebatesPending++;
 
     jobsByStage[stage] = (jobsByStage[stage] || 0) + 1;

@@ -36,7 +36,7 @@ export async function GET(
   });
 }
 
-const ALLOWED_FIELDS = new Set(["stage", "homeowner", "incomeTier", "crewLeadId", "rebateEstimate", "auditDate", "inspectionDate"]);
+const ALLOWED_FIELDS = new Set(["stage", "homeowner", "incomeTier", "crewLeadId", "rebateEstimate", "auditDate", "inspectionDate", "rebateTracker", "costing"]);
 
 export async function PATCH(
   request: Request,

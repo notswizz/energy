@@ -33,6 +33,10 @@ export function getActivityRef(companyId: string) {
   return getAdminDb().collection(`companies/${companyId}/activity`);
 }
 
+export function getProcessingLogsRef(companyId: string, jobId: string) {
+  return getAdminDb().collection(`companies/${companyId}/jobs/${jobId}/processingLogs`);
+}
+
 export function getSyncStateRef(companyId: string, provider: "snuggpro" | "companycam") {
   return getAdminDb().doc(`companies/${companyId}/syncState/${provider}`);
 }

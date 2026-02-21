@@ -95,8 +95,8 @@ async function processJob(
   const existing = await docRef.get();
 
   if (existing.exists) {
-    // Protect CRM-owned fields: stage, homeowner, stageHistory are only set on creation
-    const { stage, homeowner, stageHistory, ...syncFields } = sanitized;
+    // Protect CRM-owned fields: only set on creation, never overwritten by sync
+    const { stage, homeowner, stageHistory, rebateTracker, costing, crew, ...syncFields } = sanitized;
     await docRef.update({ ...syncFields, lastSyncedAt: now, updatedAt: now });
   } else {
     await docRef.set({

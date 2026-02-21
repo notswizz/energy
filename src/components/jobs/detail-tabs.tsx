@@ -5,6 +5,7 @@ import { useState, type ReactNode } from "react";
 interface Tab {
   id: string;
   label: string;
+  badge?: ReactNode;
   content: ReactNode;
 }
 
@@ -25,7 +26,7 @@ export function DetailTabs({ tabs }: { tabs: Tab[] }) {
                   : "border-transparent text-gray-500 hover:text-gray-700"
               }`}
             >
-              {tab.label}
+              {tab.label}{tab.badge}
             </button>
           ))}
         </nav>

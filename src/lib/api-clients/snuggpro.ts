@@ -121,10 +121,75 @@ export class SnuggProClient {
     return this.request<SnuggProHealth>("/health");
   }
 
+  async createJob(data: { firstName: string; lastName: string; address1: string; city: string; state: string; zip: string; email?: string; homePhone?: string }): Promise<{ id: string }> {
+    return this.request<{ id: string }>("/jobs", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+  }
+
   async updateStage(jobId: string, stage: string): Promise<void> {
     await this.request(`/jobs/${jobId}/stage`, {
       method: "POST",
       body: JSON.stringify({ stage }),
+    });
+  }
+
+  // Write methods (best-effort — SnuggPro API may not support all of these)
+
+  async updateBasedata(jobId: string, data: Record<string, unknown>): Promise<void> {
+    await this.request(`/jobs/${jobId}/basedata`, {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+  }
+
+  async createHvac(jobId: string, data: Record<string, unknown>): Promise<void> {
+    await this.request(`/jobs/${jobId}/hvacs`, {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+  }
+
+  async updateDhw(jobId: string, data: Record<string, unknown>): Promise<void> {
+    await this.request(`/jobs/${jobId}/dhw`, {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+  }
+
+  async createAttic(jobId: string, data: Record<string, unknown>): Promise<void> {
+    await this.request(`/jobs/${jobId}/attics`, {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+  }
+
+  async createWall(jobId: string, data: Record<string, unknown>): Promise<void> {
+    await this.request(`/jobs/${jobId}/walls`, {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+  }
+
+  async createWindow(jobId: string, data: Record<string, unknown>): Promise<void> {
+    await this.request(`/jobs/${jobId}/windows`, {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+  }
+
+  async createDoor(jobId: string, data: Record<string, unknown>): Promise<void> {
+    await this.request(`/jobs/${jobId}/doors`, {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+  }
+
+  async updateHealth(jobId: string, data: Record<string, unknown>): Promise<void> {
+    await this.request(`/jobs/${jobId}/health`, {
+      method: "POST",
+      body: JSON.stringify(data),
     });
   }
 
